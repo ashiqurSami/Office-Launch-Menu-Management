@@ -4,6 +4,7 @@ const mongoose =require('mongoose');
 const path = require("path");
 const cors = require('cors');
 const authRoute=require('./src/routes/auth_route');
+const menuRoute=require('./src/routes/menu_route');
 
 //dotenv
 const dotEnv=require("dotenv");
@@ -15,6 +16,7 @@ app.use(express.json());
 
 //routes
 app.use('/api/auth',authRoute);
+app.use('/api/menu',menuRoute);
 
 mongoose
   .connect(process.env.MONGO_URL)
