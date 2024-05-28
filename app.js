@@ -3,13 +3,18 @@ const app= new express();
 const mongoose =require('mongoose');
 const path = require("path");
 const cors = require('cors');
+const authRoute=require('./src/routes/auth_route');
 
+//dotenv
 const dotEnv=require("dotenv");
 dotEnv.config();
 
 app.use(cors());
 app.use(express.json());
 
+
+//routes
+app.use('/api/auth',authRoute);
 
 mongoose
   .connect(process.env.MONGO_URL)
