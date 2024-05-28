@@ -4,7 +4,7 @@ const {register,login}=require('../controllers/auth_controller');
 
 
 router.post('/register',register);
-router.get('/login',login)
+router.post('/login',login)
 
 
 
