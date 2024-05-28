@@ -14,7 +14,7 @@ const LoginForm = () => {
       const data=await authService.login({ email, password });
       if (data) {
         toast.success('Login successful');
-        // navigate('/');
+        navigate('/');
       }
       else{
         toast.error('Login failed');
