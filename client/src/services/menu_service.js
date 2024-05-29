@@ -7,27 +7,36 @@ const addMenu = async (menuData) => {
   const response = await axios.post(`${API_URL}/add-menu`, menuData, {
     headers: { Authorization: `Bearer ${user.token}` },
   });
+  return response.status === 201;
+};
+
+const getMenu = async (date) => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  const response = await axios.get(`${API_URL}/get-menu/${date}`, {
+    headers: { Authorization: `Bearer ${user.token}` },
+  });
+  return response.data.menu.options;
+};
+
+const selectAndUpdateOption = async (choiceData) => {  
+  const user = JSON.parse(localStorage.getItem('user'));
+  const response = await axios.post(`${API_URL}/select`, choiceData, {
+    headers: { Authorization: `Bearer ${user.token}` },
+  });
   return response.data;
 };
 
-// const getMenu = async (date) => {
-//   const user = JSON.parse(localStorage.getItem('user'));
-//   const response = await axios.get(`${API_URL}/${date}`, {
-//     headers: { Authorization: `Bearer ${user.token}` },
-//   });
-//   return response.data;
-// };
-
-// const selectOption = async (choiceData) => {
-//   const user = JSON.parse(localStorage.getItem('user'));
-//   const response = await axios.post(`${API_URL}/select`, choiceData, {
-//     headers: { Authorization: `Bearer ${user.token}` },
-//   });
-//   return response.data;
-// };
+const getAllMenuSelections = async () => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const response = await axios.get(`${API_URL}/all`, {
+      headers: { Authorization: `Bearer ${user.token}` },
+    });
+    return response.data;
+  };
 
 export default {
-  addMenu
-//   getMenu,
-//   selectOption,
+  addMenu,
+  getMenu,
+  selectAndUpdateOption,
+  getAllMenuSelections
 };
