@@ -5,6 +5,7 @@ Features:
    1. Employee can view current date menu list.
    2. Employee can add and update their menu preference.
    3. Employee can register and login to the system.
+
    Admin:
    1. Admin can add menu for a specific date.
    2. Admin can view current date menu list.
@@ -17,6 +18,7 @@ Features:
 
 Database Schema:
     User:
+    
       const UserSchema = new mongoose.Schema({
         name: {
           type: String,
