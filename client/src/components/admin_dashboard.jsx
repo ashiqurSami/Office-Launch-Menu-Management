@@ -11,9 +11,11 @@ const AdminDashboard = () => {
   const [isSelectionsCollapsed, setIsSelectionsCollapsed] = useState(true);
   const [filterDate, setFilterDate] = useState("");
 
+
+  const today = new Date().toISOString().split("T")[0];
   useEffect(() => {
     const fetchMenus = async () => {
-      const today = new Date().toISOString().split("T")[0];
+      
       const data = await menuService.getMenu(today);
       setMenus(data || []);
     };
@@ -121,7 +123,7 @@ const AdminDashboard = () => {
           onClick={() => setIsMenuCollapsed(!isMenuCollapsed)}
           style={{ cursor: "pointer" }}
         >
-          Today's Menu
+          Today's Menu ({today})
           <span>{isMenuCollapsed ? "+" : "-"}</span>
         </div>
         {!isMenuCollapsed && (
@@ -143,7 +145,7 @@ const AdminDashboard = () => {
           onClick={() => setIsSelectionsCollapsed(!isSelectionsCollapsed)}
           style={{ cursor: "pointer" }}
         >
-          All Menu Selections
+          Employees Selections
           <span>{isSelectionsCollapsed ? "+" : "-"}</span>
         </div>
         {!isSelectionsCollapsed && (
