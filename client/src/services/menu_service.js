@@ -18,7 +18,7 @@ const getMenu = async (date) => {
   return response.data.menu.options;
 };
 
-const selectOption = async (choiceData) => {  
+const selectAndUpdateOption = async (choiceData) => {  
   const user = JSON.parse(localStorage.getItem('user'));
   const response = await axios.post(`${API_URL}/select`, choiceData, {
     headers: { Authorization: `Bearer ${user.token}` },
@@ -37,6 +37,6 @@ const getAllMenuSelections = async () => {
 export default {
   addMenu,
   getMenu,
-  selectOption,
+  selectAndUpdateOption,
   getAllMenuSelections
 };
