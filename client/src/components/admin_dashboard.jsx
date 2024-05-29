@@ -11,7 +11,6 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchMenus = async () => {
       const data = await menuService.getMenu(today);
-      console.log(data);
       setMenus(data || []);
     };
     fetchMenus();

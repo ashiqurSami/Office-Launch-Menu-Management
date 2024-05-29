@@ -15,20 +15,19 @@ const getMenu = async (date) => {
   const response = await axios.get(`${API_URL}/get-menu/${date}`, {
     headers: { Authorization: `Bearer ${user.token}` },
   });
-  console.log(response.data);
   return response.data.menu.options;
 };
 
-// const selectOption = async (choiceData) => {
-//   const user = JSON.parse(localStorage.getItem('user'));
-//   const response = await axios.post(`${API_URL}/select`, choiceData, {
-//     headers: { Authorization: `Bearer ${user.token}` },
-//   });
-//   return response.data;
-// };
+const selectOption = async (choiceData) => {  
+  const user = JSON.parse(localStorage.getItem('user'));
+  const response = await axios.post(`${API_URL}/select`, choiceData, {
+    headers: { Authorization: `Bearer ${user.token}` },
+  });
+  return response.data;
+};
 
 export default {
   addMenu,
-  getMenu
-//   selectOption,
+  getMenu,
+  selectOption
 };

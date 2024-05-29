@@ -22,3 +22,18 @@ exports.getMenu=async(req,res)=>{
     }
 }   
 
+exports.selectOption=async(req,res)=>{
+    const {date,option}=req.body
+    try{
+        const newDate=new Date(date)
+        const menu=await Menu.findOne({date:newDate})
+        if(!menu){
+            return res.status(404).json({message:"Menu not found"})
+        }
+        menu.choices.push({userId:req.user,option})
+        await menu.save()
+        res.status(201).json({message:"Option selected successfully"})
+    }catch(err){
+        res.status(500).json({message:err.toString()})
+    }
+}
