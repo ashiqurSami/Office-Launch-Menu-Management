@@ -17,7 +17,7 @@ const EmployeeDashboard = () => {
   const handleSelect = async (e) => {
     e.preventDefault();
     try {
-      await menuService.selectOption({ date: new Date().toISOString().split('T')[0], option: selectedOption });
+      await menuService.selectAndUpdateOption({ date: new Date().toISOString().split('T')[0], option: selectedOption });
       alert('Option selected successfully');
     } catch (error) {
       alert('Failed to select option');
@@ -34,7 +34,7 @@ const EmployeeDashboard = () => {
             <label className="form-check-label">{option}</label>
           </div>
         ))}
-        <button type="submit" className="btn btn-primary">Select Option</button>
+        <button type="submit" className="btn btn-primary">Confirm</button>
       </form>
     </div>
   );
