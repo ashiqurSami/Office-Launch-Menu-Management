@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const MenuSchema = new mongoose.Schema({
   date: {
@@ -15,7 +15,7 @@ const MenuSchema = new mongoose.Schema({
     {
       userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: "User",
       },
       option: {
         type: String,
@@ -25,4 +25,4 @@ const MenuSchema = new mongoose.Schema({
   ],
 });
 
-module.exports = mongoose.model('Menu', MenuSchema);
+module.exports = mongoose.model("Menu", MenuSchema);
