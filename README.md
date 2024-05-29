@@ -2,12 +2,12 @@ Technology: MERN stack
 
 Features:
    
-   Employee:
+    Employee:
       1. Employee can view current date menu list.
       2. Employee can add and update their menu preference.
       3. Employee can register and login to the system.
    
-   Admin:
+    Admin:
       1. Admin can add menu for a specific date.
       2. Admin can view current date menu list.
       3. Admin can view employees menu selection with filtering option on date.
