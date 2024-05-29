@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import menuService from "../services/menu_service";
 import toast from "react-hot-toast";
+import authService from '../services/auth_service';
+import { useNavigate } from 'react-router-dom';
 
 const EmployeeDashboard = () => {
   const [menu, setMenu] = useState([]);
   const [selectedOption, setSelectedOption] = useState('');
   const today = new Date().toISOString().split('T')[0];
-
+  const navigate=useNavigate();  
   useEffect(() => {
     const fetchMenu = async () => {
      
@@ -27,8 +29,9 @@ const EmployeeDashboard = () => {
   };
 
   const handleLogout = () => {
-    // Logout logic here
+    authService.logout();
     toast.success("Logged out");
+    navigate('/login');
   };
 
   return (

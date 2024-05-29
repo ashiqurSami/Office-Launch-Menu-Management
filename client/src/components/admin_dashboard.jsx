@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import menuService from "../services/menu_service";
 import toast from "react-hot-toast";
+import authService from "../services/auth_service";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const AdminDashboard = () => {
   const [date, setDate] = useState("");
@@ -10,7 +12,7 @@ const AdminDashboard = () => {
   const [isMenuCollapsed, setIsMenuCollapsed] = useState(true);
   const [isSelectionsCollapsed, setIsSelectionsCollapsed] = useState(true);
   const [filterDate, setFilterDate] = useState("");
-
+  const navigate=useNavigate();
 
   const today = new Date().toISOString().split("T")[0];
   useEffect(() => {
@@ -55,8 +57,9 @@ const AdminDashboard = () => {
   };
 
   const handleLogout = () => {
-    // Logout logic here
+    authService.logout();
     toast.success("Logged out");
+    navigate('/login');
   };
 
   const filteredSelections = selections.filter(menu => {

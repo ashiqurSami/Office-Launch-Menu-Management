@@ -11,18 +11,23 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const data=await authService.login({ email, password });
-      if (data) {
+      const [status,admin]=await authService.login({ email, password });
+      if (status) {
         toast.success('Login successful');
-        navigate('/');
+        if (admin) {
+          console.log(admin);
+          navigate('/admin');
+        } else {
+          navigate('/employee');
+        }
+        
       }
       else{
         toast.error('Login failed');
       }
-    //   navigate('/');
     } catch (error) {
+      console.log(error.toString());
       toast.error('Login failed');
-    //   console.log(error.toString());
     }
   };
 

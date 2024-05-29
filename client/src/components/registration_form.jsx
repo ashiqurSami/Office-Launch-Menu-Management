@@ -16,7 +16,7 @@ const RegistrationForm = () => {
      const data= await authService.register({ name, email, password });
       if (data) {
         toast.success('Registration successful');
-        // navigate('/login');
+        navigate('/login');
       }
       else{
         toast.error('Registration failed');
