@@ -7,7 +7,7 @@ const addMenu = async (menuData) => {
   const response = await axios.post(`${API_URL}/add-menu`, menuData, {
     headers: { Authorization: `Bearer ${user.token}` },
   });
-  return response.data;
+  return response.status === 201;
 };
 
 const getMenu = async (date) => {
@@ -26,8 +26,17 @@ const selectOption = async (choiceData) => {
   return response.data;
 };
 
+const getAllMenuSelections = async () => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const response = await axios.get(`${API_URL}/all`, {
+      headers: { Authorization: `Bearer ${user.token}` },
+    });
+    return response.data;
+  };
+
 export default {
   addMenu,
   getMenu,
-  selectOption
+  selectOption,
+  getAllMenuSelections
 };

@@ -1,5 +1,6 @@
 const Menu= require('../models/Menu');
 
+
 exports.addMenu=async(req,res)=>{
     const {date,options}=req.body 
     try{
@@ -37,3 +38,13 @@ exports.selectOption=async(req,res)=>{
         res.status(500).json({message:err.toString()})
     }
 }
+
+exports.getAllMenuSelections = async (req, res) => {
+    try {
+      const menus = await Menu.find().populate('choices.userId', 'name email');
+      res.status(201).json(menus);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  };
+  
