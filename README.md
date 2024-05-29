@@ -1,16 +1,17 @@
 Technology: MERN stack
 
 Features:
-   Employee:
-   1. Employee can view current date menu list.
-   2. Employee can add and update their menu preference.
-   3. Employee can register and login to the system.
-
-   Admin:
-   1. Admin can add menu for a specific date.
-   2. Admin can view current date menu list.
-   3. Admin can view employees menu selection with filtering option on date.
-   4. Admin will get a account from system administrator. The account is ( email:admin@gmail.com, pass: admin) and that wil be used for admin log in.
+   
+    Employee:
+      1. Employee can view current date menu list.
+      2. Employee can add and update their menu preference.
+      3. Employee can register and login to the system.
+   
+    Admin:
+      1. Admin can add menu for a specific date.
+      2. Admin can view current date menu list.
+      3. Admin can view employees menu selection with filtering option on date.
+      4. Admin will get a account from system administrator. The account is ( email:admin@gmail.com, pass: admin) and that wil be used for admin log in.
 
                        ** Admin default account:
                           email:admin@gmail.com
@@ -70,13 +71,12 @@ Setup Instructions:
   Backend and frontend connected with scaffolding
   
      Backend:
-       1. run command "npm init"
-       2. create project structure
+       1. open cmd in the root directory
+       2. run command "npm i"
        
      Frontend:
-       1.run command "npm create vite"
-       2.then navigate to client directory
-       3.run command "npm i"
+       1.navigate to client directory
+       2.run command "npm i"
 
 Instruction to run the project:
 
