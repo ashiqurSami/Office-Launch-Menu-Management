@@ -17,8 +17,8 @@ Features:
                           password:admin **       
 
 Database Schema:
-    User:
     
+    User:
       const UserSchema = new mongoose.Schema({
         name: {
           type: String,
@@ -68,19 +68,23 @@ Database Schema:
 
 Setup Instructions:
   Backend and frontend connected with scaffolding
-  Backend:
-    1. run command "npm init"
-    2. create project structure
-  Frontend:
-    1.run command "npm create vite"
-    2.then navigate to client directory
-    3.run command "npm i"
+  
+     Backend:
+       1. run command "npm init"
+       2. create project structure
+       
+     Frontend:
+       1.run command "npm create vite"
+       2.then navigate to client directory
+       3.run command "npm i"
 
 Instruction to run the project:
-   Backend:
-     1.open cmd in the root directory
-     2.run command "npm run server"
-   Frontend:
-     1.navigate to client directory
-     2.run command "npm run dev"
+
+      Backend:
+        1.open cmd in the root directory
+        2.run command "npm run server"
+        
+      Frontend:
+        1.navigate to client directory
+        2.run command "npm run dev"
      
