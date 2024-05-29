@@ -9,6 +9,7 @@ const AdminDashboard = () => {
   const [selections, setSelections] = useState([]);
   const [isMenuCollapsed, setIsMenuCollapsed] = useState(true);
   const [isSelectionsCollapsed, setIsSelectionsCollapsed] = useState(true);
+  const [filterDate, setFilterDate] = useState("");
 
   useEffect(() => {
     const fetchMenus = async () => {
@@ -55,6 +56,12 @@ const AdminDashboard = () => {
     // Logout logic here
     toast.success("Logged out");
   };
+
+  const filteredSelections = selections.filter(menu => {
+    if (!filterDate) return true;
+    const menuDate = new Date(menu.date).toISOString().split("T")[0];
+    return menuDate === filterDate;
+  });
 
   return (
     <div className="container mt-5">
@@ -130,7 +137,7 @@ const AdminDashboard = () => {
         )}
       </div>
 
-      <div className="card">
+      <div className="card mb-4">
         <div
           className="card-header bg-success text-white font-weight-bold d-flex justify-content-between align-items-center"
           onClick={() => setIsSelectionsCollapsed(!isSelectionsCollapsed)}
@@ -141,6 +148,15 @@ const AdminDashboard = () => {
         </div>
         {!isSelectionsCollapsed && (
           <div className="card-body">
+            <div className="form-group mb-3">
+              <label>Filter by Date</label>
+              <input
+                type="date"
+                className="form-control"
+                value={filterDate}
+                onChange={(e) => setFilterDate(e.target.value)}
+              />
+            </div>
             <table className="table">
               <thead>
                 <tr>
@@ -151,7 +167,7 @@ const AdminDashboard = () => {
                 </tr>
               </thead>
               <tbody>
-                {selections.map(
+                {filteredSelections.map(
                   (menu, index) =>
                     menu.choices &&
                     menu.choices.map((choice, idx) => (
